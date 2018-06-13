@@ -150,6 +150,8 @@
     <Content Include="Images\zblogo.png" />
     <Content Include="SQL\completed_work.sql" />
     <Content Include="SQL\completed_work_other.sql" />
+    <Content Include="SQL\current_transfers.sql" />
+    <Content Include="SQL\tracked_kits.sql" />
     <Content Include="Website\html\404.html" />
     <Content Include="Website\html\apple-touch-icon-precomposed.png" />
     <Content Include="Website\html\crossdomain.xml" />
