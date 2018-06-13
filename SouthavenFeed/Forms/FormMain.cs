@@ -38,7 +38,7 @@ namespace SouthavenFeed.Forms
             this.metroListViewFeedOrganizer.Items.Clear();
             this.metroListViewFeedOrganizer.View = View.Details;
 
-            this.metroListViewFeedOrganizer.Columns
+            //this.metroListViewFeedOrganizer.Columns;
         }
     }
 }

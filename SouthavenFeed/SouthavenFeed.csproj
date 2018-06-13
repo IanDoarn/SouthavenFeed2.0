@@ -122,12 +122,65 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SQL\README.md" />
+    <None Include="Website\html\.htaccess" />
+    <None Include="Website\html\CHANGELOG.md" />
+    <None Include="Website\html\CONTRIBUTING.md" />
+    <None Include="Website\html\data\completed_work.json" />
+    <None Include="Website\html\data\completed_work_other.json" />
+    <None Include="Website\html\data\navigation.json" />
+    <None Include="Website\html\doc\crossdomain.md" />
+    <None Include="Website\html\doc\css.md" />
+    <None Include="Website\html\doc\extend.md" />
+    <None Include="Website\html\doc\faq.md" />
+    <None Include="Website\html\doc\html.md" />
+    <None Include="Website\html\doc\js.md" />
+    <None Include="Website\html\doc\misc.md" />
+    <None Include="Website\html\doc\TOC.md" />
+    <None Include="Website\html\doc\usage.md" />
+    <None Include="Website\html\img\image6.emf" />
+    <None Include="Website\html\img\image7.emf" />
+    <None Include="Website\html\LICENSE.md" />
+    <None Include="Website\html\README.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\zblogo.png" />
+    <Content Include="SQL\completed_work.sql" />
+    <Content Include="SQL\completed_work_other.sql" />
+    <Content Include="Website\html\404.html" />
+    <Content Include="Website\html\apple-touch-icon-precomposed.png" />
+    <Content Include="Website\html\crossdomain.xml" />
+    <Content Include="Website\html\css\main.css" />
+    <Content Include="Website\html\css\normalize.css" />
+    <Content Include="Website\html\favicon.ico" />
+    <Content Include="Website\html\humans.txt" />
+    <Content Include="Website\html\img\.gitignore" />
+    <Content Include="Website\html\img\image1.png" />
+    <Content Include="Website\html\img\image2.png" />
+    <Content Include="Website\html\img\image3.png" />
+    <Content Include="Website\html\img\image4.png" />
+    <Content Include="Website\html\img\image5.png" />
+    <Content Include="Website\html\img\mission.PNG" />
+    <Content Include="Website\html\img\person_placeholder.png" />
+    <Content Include="Website\html\img\rolando.PNG" />
+    <Content Include="Website\html\img\rolando_pic.jpg" />
+    <Content Include="Website\html\index.html" />
+    <Content Include="Website\html\js\main.js" />
+    <Content Include="Website\html\js\motto.js" />
+    <Content Include="Website\html\js\otherproductivity.js" />
+    <Content Include="Website\html\js\plugins.js" />
+    <Content Include="Website\html\js\productivity.js" />
+    <Content Include="Website\html\js\vendor\jquery-1.10.2.min.js" />
+    <Content Include="Website\html\js\vendor\modernizr-2.6.2.min.js" />
+    <Content Include="Website\html\pages\404.html" />
+    <Content Include="Website\html\pages\motto.html" />
+    <Content Include="Website\html\pages\otherproductivity.html" />
+    <Content Include="Website\html\pages\productivity.html" />
+    <Content Include="Website\html\pages\template.html" />
+    <Content Include="Website\html\robots.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\FormExtras\" />
