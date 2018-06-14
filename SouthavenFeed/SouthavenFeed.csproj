@@ -157,6 +157,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\image1.png" />
+    <Content Include="Images\image2.png" />
+    <Content Include="Images\image3.png" />
+    <Content Include="Images\image4.png" />
+    <Content Include="Images\image5.png" />
     <Content Include="Images\zblogo.png" />
     <Content Include="SQL\assigned_outbound_transfers_movements.sql" />
     <Content Include="SQL\completed_movements.sql" />
