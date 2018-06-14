@@ -2,22 +2,22 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SouthavenFeed.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ORACLE_HOST" Type="System.String" Scope="User">
+    <Setting Name="ORACLE_HOST" Type="System.String" Scope="Application">
       <Value Profile="(Default)">10.201.207.188</Value>
     </Setting>
-    <Setting Name="ORACLE_SID" Type="System.String" Scope="User">
+    <Setting Name="ORACLE_SID" Type="System.String" Scope="Application">
       <Value Profile="(Default)">smsprd</Value>
     </Setting>
-    <Setting Name="ORACLE_PORT" Type="System.String" Scope="User">
+    <Setting Name="ORACLE_PORT" Type="System.String" Scope="Application">
       <Value Profile="(Default)">1521</Value>
     </Setting>
-    <Setting Name="ORACLE_USERNAME" Type="System.String" Scope="User">
+    <Setting Name="ORACLE_USERNAME" Type="System.String" Scope="Application">
       <Value Profile="(Default)">logistics</Value>
     </Setting>
-    <Setting Name="ORACLE_PASSWORD" Type="System.String" Scope="User">
-      <Value Profile="(Default)">log78gist</Value>
+    <Setting Name="ORACLE_PASSWORD" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="ORACLE_COMPLETED_WORK" Type="System.String" Scope="User">
+    <Setting Name="ORACLE_COMPLETED_WORK" Type="System.String" Scope="Application">
       <Value Profile="(Default)">WITH TRANSFERS AS (
     SELECT
       T.ID                                 AS TRANSFER_ID,
@@ -312,7 +312,7 @@ SELECT
 FROM
   EMPLOYEE_PRODUCTIVITY</Value>
     </Setting>
-    <Setting Name="ORACLE_COMPLETED_WORK_OTHER" Type="System.String" Scope="User">
+    <Setting Name="ORACLE_COMPLETED_WORK_OTHER" Type="System.String" Scope="Application">
       <Value Profile="(Default)">WITH TRANSFERS AS (
     SELECT
       T.ID                                 AS TRANSFER_ID,
@@ -600,13 +600,16 @@ SELECT
 FROM
   EMPLOYEE_PRODUCTIVITY</Value>
     </Setting>
-    <Setting Name="DEFAULT_NAVIGATION_ORDER" Type="System.Collections.Specialized.StringCollection" Scope="User">
+    <Setting Name="DEFAULT_NAVIGATION_ORDER" Type="System.Collections.Specialized.StringCollection" Scope="Application">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;string&gt;productivity&lt;/string&gt;
   &lt;string&gt;otherproductivity&lt;/string&gt;
   &lt;string&gt;motto&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="DEV_MODE" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

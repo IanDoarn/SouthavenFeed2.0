@@ -19,48 +19,76 @@ namespace SouthavenFeed
         [STAThread]
         static void Main()
         {
-            OracleDB oracle = new OracleDB(LoadOracleConfig());
-
-            try
+            if(Properties.Settings.Default.DEV_MODE)
             {
-                TestConnections(oracle);
-                connectionAvailable = true;
+                /// <summary>       
+                /// Dev mode is designed to isgnore oracle and launch without
+                /// databse connections.
+                /// Dev mode will instead use dummy data from json files in the 
+                /// ExampleData Folder
+                /// </summary>
+
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new FormMain(ora: null));
             }
-            catch(Exception ex)
+            else
             {
-                MessageBox.Show(string.Format("Unable to connect to Oracle. [{}]", ex.ToString()), "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                connectionAvailable = false;
-            }
-            finally
-            {
-                if (connectionAvailable)
-                {
-                    oracle.OpenConnection();
+                /// <summary>
+                /// Regular application mode.
+                /// </summary>
 
-                    Application.EnableVisualStyles();
-                    Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new FormMain(oracle));
+                OracleDB oracle = new OracleDB(LoadOracleConfig());
 
-                    oracle.CloseConnection();
-                }
-                else
+                try
                 {
-                    MessageBox.Show(
-                        ErrorMessages.Message(EMsgCodes.UNABLE_TO_CONNECT_TO_DATABASE),
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error
-                    );
+
+                    TestConnections(oracle);
+                    connectionAvailable = true;
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(string.Format("Unable to connect to Oracle. [{}]", ex.ToString()), "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    connectionAvailable = false;
+                }
+                finally
+                {
+                    if (connectionAvailable)
+                    {
+                        oracle.OpenConnection();
+
+                        Application.EnableVisualStyles();
+                        Application.SetCompatibleTextRenderingDefault(false);
+                        Application.Run(new FormMain(oracle));
+
+                        oracle.CloseConnection();
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            ErrorMessages.Message(EMsgCodes.UNABLE_TO_CONNECT_TO_DATABASE),
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error
+                        );
+                    }
+                }
+
             }
         }
 
+        /// <summary>
+        /// Load oracle config object
+        /// </summary>
+        /// <returns>OracleConfig</returns>
         private static OracleConfig LoadOracleConfig()
         {
+            string password = Microsoft.VisualBasic.Interaction.InputBox("Oracle Password", "Enter oracle password", "", 0, 0);
+
             return new OracleConfig(
                 Properties.Settings.Default.ORACLE_HOST,
                 Properties.Settings.Default.ORACLE_SID,
                 Properties.Settings.Default.ORACLE_PORT,
                 Properties.Settings.Default.ORACLE_USERNAME,
-                Properties.Settings.Default.ORACLE_PASSWORD
+                password
             );
         }
 

@@ -23,67 +23,52 @@ namespace SouthavenFeed.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10.201.207.188")]
         public string ORACLE_HOST {
             get {
                 return ((string)(this["ORACLE_HOST"]));
             }
-            set {
-                this["ORACLE_HOST"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("smsprd")]
         public string ORACLE_SID {
             get {
                 return ((string)(this["ORACLE_SID"]));
             }
-            set {
-                this["ORACLE_SID"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1521")]
         public string ORACLE_PORT {
             get {
                 return ((string)(this["ORACLE_PORT"]));
             }
-            set {
-                this["ORACLE_PORT"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("logistics")]
         public string ORACLE_USERNAME {
             get {
                 return ((string)(this["ORACLE_USERNAME"]));
             }
-            set {
-                this["ORACLE_USERNAME"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("log78gist")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ORACLE_PASSWORD {
             get {
                 return ((string)(this["ORACLE_PASSWORD"]));
             }
-            set {
-                this["ORACLE_PASSWORD"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("WITH TRANSFERS AS (\r\n    SELECT\r\n      T.ID                                 AS TR" +
             "ANSFER_ID,\r\n\r\n      CASE\r\n      WHEN PK.ID = B.ID\r\n        THEN NULL\r\n      ELSE" +
@@ -217,12 +202,9 @@ namespace SouthavenFeed.Properties {
             get {
                 return ((string)(this["ORACLE_COMPLETED_WORK"]));
             }
-            set {
-                this["ORACLE_COMPLETED_WORK"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("WITH TRANSFERS AS (\r\n    SELECT\r\n      T.ID                                 AS TR" +
             "ANSFER_ID,\r\n\r\n      CASE\r\n      WHEN PK.ID = B.ID\r\n        THEN NULL\r\n      ELSE" +
@@ -354,12 +336,9 @@ namespace SouthavenFeed.Properties {
             get {
                 return ((string)(this["ORACLE_COMPLETED_WORK_OTHER"]));
             }
-            set {
-                this["ORACLE_COMPLETED_WORK_OTHER"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
@@ -371,8 +350,14 @@ namespace SouthavenFeed.Properties {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["DEFAULT_NAVIGATION_ORDER"]));
             }
-            set {
-                this["DEFAULT_NAVIGATION_ORDER"] = value;
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool DEV_MODE {
+            get {
+                return ((bool)(this["DEV_MODE"]));
             }
         }
     }
