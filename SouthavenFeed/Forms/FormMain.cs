@@ -26,6 +26,8 @@ namespace SouthavenFeed.Forms
             this.oracle = ora;
 
             InitializeComponent();
+
+            generateListViewItems();
         }
 
         private void generateListViewItems()
@@ -34,11 +36,27 @@ namespace SouthavenFeed.Forms
             // Referenced from here
             // http://denricdenise.info/2016/01/metrolistview-is-coming-in-metroframework/
             // ====================
-            this.metroListViewFeedOrganizer.BeginUpdate();
-            this.metroListViewFeedOrganizer.Items.Clear();
-            this.metroListViewFeedOrganizer.View = View.Details;
+            metroListViewFeedOrganizer.BeginUpdate();
+            metroListViewFeedOrganizer.Items.Clear();
+            metroListViewFeedOrganizer.View = View.Details;
 
-            //this.metroListViewFeedOrganizer.Columns;
+            metroListViewFeedOrganizer.Columns.Add("Col1");
+            metroListViewFeedOrganizer.Columns.Add("Col2");
+            metroListViewFeedOrganizer.Columns.Add("Col2");
+            metroListViewFeedOrganizer.CheckBoxes = true;
+
+            for (int i = 0; i < 1000; i++)
+            {
+                ListViewItem lvi;
+                lvi = new ListViewItem(new string[] { "Aaaaa Sample" + i, "Bbbbb" + i, "Cccccc" + i });
+                metroListViewFeedOrganizer.Items.Add(lvi);
+                metroListViewFeedOrganizer.Items[0].Checked = true;
+            }
+
+            metroListViewFeedOrganizer.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            metroListViewFeedOrganizer.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            metroListViewFeedOrganizer.EndUpdate();
+            metroListViewFeedOrganizer.AllowSorting = true;
         }
     }
 }

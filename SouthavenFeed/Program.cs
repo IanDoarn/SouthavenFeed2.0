@@ -28,6 +28,10 @@ namespace SouthavenFeed
                 /// ExampleData Folder
                 /// </summary>
 
+                //OracleDB oracle = new OracleDB(LoadOracleConfig("log78gist"));
+
+                //oracle.OpenConnection();
+
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new FormMain(ora: null));
@@ -91,6 +95,25 @@ namespace SouthavenFeed
                 password
             );
         }
+
+        /// <summary>
+        /// Load oracle config object,
+        /// allows dev to pass password without prompt
+        /// </summary>
+        /// <returns>OracleConfig</returns>
+        private static OracleConfig LoadOracleConfig(string password)
+        {
+
+            return new OracleConfig(
+                Properties.Settings.Default.ORACLE_HOST,
+                Properties.Settings.Default.ORACLE_SID,
+                Properties.Settings.Default.ORACLE_PORT,
+                Properties.Settings.Default.ORACLE_USERNAME,
+                password
+            );
+        }
+
+
 
         private static void TestConnections(OracleDB ora)
         {

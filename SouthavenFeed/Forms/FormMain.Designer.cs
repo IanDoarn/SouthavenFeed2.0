@@ -34,8 +34,8 @@
             this.metroPanelMainLeft = new MetroFramework.Controls.MetroPanel();
             this.tableLayoutPanelFeedOrganizer = new System.Windows.Forms.TableLayoutPanel();
             this.metroPanelFeedOrganizer = new MetroFramework.Controls.MetroPanel();
-            this.metroPanelFeedOrganizerControls = new MetroFramework.Controls.MetroPanel();
             this.metroListViewFeedOrganizer = new MetroFramework.Controls.MetroListView();
+            this.metroPanelFeedOrganizerControls = new MetroFramework.Controls.MetroPanel();
             this.mainInnerPanel.SuspendLayout();
             this.tableLayoutPanelInnerPanel.SuspendLayout();
             this.metroPanelMainLeft.SuspendLayout();
@@ -134,6 +134,19 @@
             this.metroPanelFeedOrganizer.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanelFeedOrganizer.VerticalScrollbarSize = 10;
             // 
+            // metroListViewFeedOrganizer
+            // 
+            this.metroListViewFeedOrganizer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroListViewFeedOrganizer.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.metroListViewFeedOrganizer.FullRowSelect = true;
+            this.metroListViewFeedOrganizer.Location = new System.Drawing.Point(0, 0);
+            this.metroListViewFeedOrganizer.Name = "metroListViewFeedOrganizer";
+            this.metroListViewFeedOrganizer.OwnerDraw = true;
+            this.metroListViewFeedOrganizer.Size = new System.Drawing.Size(262, 192);
+            this.metroListViewFeedOrganizer.TabIndex = 2;
+            this.metroListViewFeedOrganizer.UseCompatibleStateImageBehavior = false;
+            this.metroListViewFeedOrganizer.UseSelectable = true;
+            // 
             // metroPanelFeedOrganizerControls
             // 
             this.metroPanelFeedOrganizerControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -148,19 +161,6 @@
             this.metroPanelFeedOrganizerControls.VerticalScrollbarBarColor = true;
             this.metroPanelFeedOrganizerControls.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanelFeedOrganizerControls.VerticalScrollbarSize = 10;
-            // 
-            // metroListViewFeedOrganizer
-            // 
-            this.metroListViewFeedOrganizer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroListViewFeedOrganizer.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.metroListViewFeedOrganizer.FullRowSelect = true;
-            this.metroListViewFeedOrganizer.Location = new System.Drawing.Point(0, 0);
-            this.metroListViewFeedOrganizer.Name = "metroListViewFeedOrganizer";
-            this.metroListViewFeedOrganizer.OwnerDraw = true;
-            this.metroListViewFeedOrganizer.Size = new System.Drawing.Size(262, 192);
-            this.metroListViewFeedOrganizer.TabIndex = 2;
-            this.metroListViewFeedOrganizer.UseCompatibleStateImageBehavior = false;
-            this.metroListViewFeedOrganizer.UseSelectable = true;
             // 
             // FormMain
             // 
