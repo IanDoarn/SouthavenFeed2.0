@@ -34,7 +34,7 @@ namespace SouthavenFeed
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new FormMain(ora: null));
+                Application.Run(new FormMain(ora: null, fManager: new FeedTaskManager.FeedManager(null)));
             }
             else
             {
@@ -63,7 +63,7 @@ namespace SouthavenFeed
 
                         Application.EnableVisualStyles();
                         Application.SetCompatibleTextRenderingDefault(false);
-                        Application.Run(new FormMain(oracle));
+                        Application.Run(new FormMain(oracle, new FeedTaskManager.FeedManager(oracle)));
 
                         oracle.CloseConnection();
                     }
@@ -112,8 +112,6 @@ namespace SouthavenFeed
                 password
             );
         }
-
-
 
         private static void TestConnections(OracleDB ora)
         {

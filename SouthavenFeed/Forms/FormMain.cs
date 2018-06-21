@@ -12,20 +12,29 @@ using MetroFramework.Forms;
 using SouthavenFeed.DataBase;
 using SouthavenFeed.Forms;
 using SouthavenFeed.Exceptions;
-
+using SouthavenFeed.FeedTaskManager;
 
 namespace SouthavenFeed.Forms
 {
     public partial class FormMain : MetroForm
     {
         private OracleDB oracle;
-        private StringCollection defaultNavigationOrder = Properties.Settings.Default.DEFAULT_NAVIGATION_ORDER;
 
-        public FormMain(OracleDB ora)
+        private StringCollection defaultNavigationOrder = Properties.Settings.Default.DEFAULT_NAVIGATION_ORDER;
+        private StringCollection feedPages = Properties.Settings.Default.FEED_PAGES;
+        private List<ListViewItem> queuedItems = new List<ListViewItem>();
+
+        private FeedManager fManager;
+
+        public FormMain(OracleDB ora, FeedManager fManager)
         {
             this.oracle = ora;
 
+            this.fManager = fManager;
+
             InitializeComponent();
+
+            this.metroListViewFeedOrganizer.AllowDrop = true;
 
             generateListViewItems();
         }
@@ -37,26 +46,83 @@ namespace SouthavenFeed.Forms
             // http://denricdenise.info/2016/01/metrolistview-is-coming-in-metroframework/
             // ====================
             metroListViewFeedOrganizer.BeginUpdate();
+
+            metroListViewFeedQueue.BeginUpdate();
+
+        
             metroListViewFeedOrganizer.Items.Clear();
             metroListViewFeedOrganizer.View = View.Details;
 
-            metroListViewFeedOrganizer.Columns.Add("Col1");
-            metroListViewFeedOrganizer.Columns.Add("Col2");
-            metroListViewFeedOrganizer.Columns.Add("Col2");
+            metroListViewFeedQueue.Items.Clear();
+            metroListViewFeedQueue.View = View.Details;
+
+            metroListViewFeedOrganizer.Columns.Add("Page Name");
             metroListViewFeedOrganizer.CheckBoxes = true;
 
-            for (int i = 0; i < 1000; i++)
+            metroListViewFeedQueue.Columns.Add("Page Name");
+
+
+            foreach (String s in defaultNavigationOrder)
             {
-                ListViewItem lvi;
-                lvi = new ListViewItem(new string[] { "Aaaaa Sample" + i, "Bbbbb" + i, "Cccccc" + i });
-                metroListViewFeedOrganizer.Items.Add(lvi);
-                metroListViewFeedOrganizer.Items[0].Checked = true;
+                ListViewItem item = new ListViewItem(s);
+                item.Checked = true;
+
+                metroListViewFeedOrganizer.Items.Add(item);            
+                metroListViewFeedQueue.Items.Add(new ListViewItem(s));
+
+            }
+
+            foreach(String s in feedPages)
+            {
+                metroListViewFeedOrganizer.Items.Add(new ListViewItem(s));
             }
 
             metroListViewFeedOrganizer.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             metroListViewFeedOrganizer.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+            metroListViewFeedQueue.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            metroListViewFeedQueue.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
             metroListViewFeedOrganizer.EndUpdate();
-            metroListViewFeedOrganizer.AllowSorting = true;
+            metroListViewFeedQueue.EndUpdate();
+        }
+
+        private void metroButtonAddItemsToQueue_Click(object sender, EventArgs e)
+        {
+            if(queuedItems.Count > 0)
+            {
+                metroListViewFeedQueue.Items.Clear();
+                queuedItems.Clear();
+            }
+
+            List<string> queueItems = new List<string>();
+
+            metroListViewFeedQueue.BeginUpdate();
+
+            foreach(ListViewItem lvi in metroListViewFeedOrganizer.Items)
+            {
+                if(lvi.Checked)
+                {                
+                    ListViewItem l = (ListViewItem)lvi.Clone();
+
+                    metroListViewFeedQueue.Items.Add(l);
+
+                    queuedItems.Add(l);
+
+                    queueItems.Add(lvi.Text);
+                }
+            }
+
+            metroListViewFeedQueue.EndUpdate();
+
+            fManager.BuildNavigationQueue(queueItems);
+
+        }
+
+        private void metroButtonClearQueue_Click(object sender, EventArgs e)
+        {
+            metroListViewFeedQueue.Items.Clear();
+            queuedItems.Clear();
         }
     }
 }

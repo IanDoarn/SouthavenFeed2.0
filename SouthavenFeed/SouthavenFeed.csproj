@@ -89,6 +89,11 @@
     <Compile Include="DataBase\OracleDB.cs" />
     <Compile Include="Exceptions\EMsgCodes.cs" />
     <Compile Include="Exceptions\ErrorMessages.cs" />
+    <Compile Include="FeedTaskManager\Jsonifiyer.cs" />
+    <Compile Include="FeedTaskManager\FeedManager.cs" />
+    <Compile Include="Forms\FormExtras\ListViewWithReordering.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,9 +102,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QQueue\CompletedWorkQuery.cs" />
-    <Compile Include="QQueue\IQuery.cs" />
-    <Compile Include="QQueue\Query.cs" />
+    <Compile Include="FeedTaskManager\QQueue\CompletedWorkQuery.cs" />
+    <Compile Include="FeedTaskManager\QQueue\IQuery.cs" />
+    <Compile Include="FeedTaskManager\QQueue\Query.cs" />
     <Compile Include="Webserver\SimpleHTTPServer.cs" />
     <EmbeddedResource Include="Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -133,25 +138,63 @@
     <None Include="ExampleData\movement_breakout.json" />
     <None Include="ExampleData\navigation.json" />
     <None Include="SQL\README.md" />
-    <None Include="Website\html\.htaccess" />
-    <None Include="Website\html\CHANGELOG.md" />
-    <None Include="Website\html\CONTRIBUTING.md" />
-    <None Include="Website\html\data\completed_work.json" />
-    <None Include="Website\html\data\completed_work_other.json" />
-    <None Include="Website\html\data\navigation.json" />
-    <None Include="Website\html\doc\crossdomain.md" />
-    <None Include="Website\html\doc\css.md" />
-    <None Include="Website\html\doc\extend.md" />
-    <None Include="Website\html\doc\faq.md" />
-    <None Include="Website\html\doc\html.md" />
-    <None Include="Website\html\doc\js.md" />
-    <None Include="Website\html\doc\misc.md" />
-    <None Include="Website\html\doc\TOC.md" />
-    <None Include="Website\html\doc\usage.md" />
-    <None Include="Website\html\img\image6.emf" />
-    <None Include="Website\html\img\image7.emf" />
-    <None Include="Website\html\LICENSE.md" />
-    <None Include="Website\html\README.md" />
+    <None Include="Website\html\.htaccess">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\CHANGELOG.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\CONTRIBUTING.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\data\completed_work.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\data\completed_work_other.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\data\navigation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\doc\crossdomain.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\doc\css.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\doc\extend.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\doc\faq.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\doc\html.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\doc\js.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\doc\misc.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\doc\TOC.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\doc\usage.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\img\image6.emf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\img\image7.emf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\LICENSE.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Website\html\README.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -172,41 +215,101 @@
     <Content Include="SQL\current_transfers.sql" />
     <Content Include="SQL\movement_breakout.sql" />
     <Content Include="SQL\tracked_kits.sql" />
-    <Content Include="Website\html\404.html" />
-    <Content Include="Website\html\apple-touch-icon-precomposed.png" />
-    <Content Include="Website\html\crossdomain.xml" />
-    <Content Include="Website\html\css\main.css" />
-    <Content Include="Website\html\css\normalize.css" />
-    <Content Include="Website\html\favicon.ico" />
-    <Content Include="Website\html\humans.txt" />
-    <Content Include="Website\html\img\.gitignore" />
-    <Content Include="Website\html\img\image1.png" />
-    <Content Include="Website\html\img\image2.png" />
-    <Content Include="Website\html\img\image3.png" />
-    <Content Include="Website\html\img\image4.png" />
-    <Content Include="Website\html\img\image5.png" />
-    <Content Include="Website\html\img\mission.PNG" />
-    <Content Include="Website\html\img\person_placeholder.png" />
-    <Content Include="Website\html\img\rolando.PNG" />
-    <Content Include="Website\html\img\rolando_pic.jpg" />
-    <Content Include="Website\html\index.html" />
-    <Content Include="Website\html\js\main.js" />
-    <Content Include="Website\html\js\motto.js" />
-    <Content Include="Website\html\js\otherproductivity.js" />
-    <Content Include="Website\html\js\plugins.js" />
-    <Content Include="Website\html\js\productivity.js" />
-    <Content Include="Website\html\js\vendor\jquery-1.10.2.min.js" />
-    <Content Include="Website\html\js\vendor\modernizr-2.6.2.min.js" />
-    <Content Include="Website\html\pages\404.html" />
-    <Content Include="Website\html\pages\motto.html" />
-    <Content Include="Website\html\pages\otherproductivity.html" />
-    <Content Include="Website\html\pages\productivity.html" />
-    <Content Include="Website\html\pages\template.html" />
-    <Content Include="Website\html\robots.txt" />
+    <Content Include="Website\html\404.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\apple-touch-icon-precomposed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\crossdomain.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\css\main.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\css\normalize.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\favicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\humans.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\img\.gitignore">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\img\image1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\img\image2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\img\image3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\img\image4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\img\image5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\img\mission.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\img\person_placeholder.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\img\rolando.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\img\rolando_pic.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\js\main.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\js\motto.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\js\otherproductivity.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\js\plugins.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\js\productivity.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\js\vendor\jquery-1.10.2.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\js\vendor\modernizr-2.6.2.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\pages\404.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\pages\motto.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\pages\otherproductivity.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\pages\productivity.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\pages\template.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Website\html\robots.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\FormExtras\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
