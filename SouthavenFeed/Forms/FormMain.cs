@@ -29,12 +29,11 @@ namespace SouthavenFeed.Forms
         public FormMain(OracleDB ora, FeedManager fManager)
         {
             this.oracle = ora;
-
             this.fManager = fManager;
 
             InitializeComponent();
 
-            this.metroListViewFeedOrganizer.AllowDrop = true;
+            metroComboBoxPresetQueues.SelectedIndex = 0;
 
             generateListViewItems();
         }
@@ -49,7 +48,7 @@ namespace SouthavenFeed.Forms
 
             metroListViewFeedQueue.BeginUpdate();
 
-        
+            metroListViewFeedOrganizer.AllowDrop = true;
             metroListViewFeedOrganizer.Items.Clear();
             metroListViewFeedOrganizer.View = View.Details;
 
@@ -123,6 +122,41 @@ namespace SouthavenFeed.Forms
         {
             metroListViewFeedQueue.Items.Clear();
             queuedItems.Clear();
+
+            foreach (ListViewItem lvi in metroListViewFeedOrganizer.Items)
+            {
+                if (lvi.Checked)
+                    lvi.Checked = false;            
+            }
+        }
+
+        private void metroButtonQueueAll_Click(object sender, EventArgs e)
+        {
+            metroListViewFeedQueue.Items.Clear();
+            queuedItems.Clear();
+
+            List<string> queueItems = new List<string>();
+
+            metroListViewFeedQueue.BeginUpdate();
+
+            foreach (ListViewItem lvi in metroListViewFeedOrganizer.Items)
+            {
+                if (!lvi.Checked)
+                    lvi.Checked = true;
+
+                ListViewItem l = (ListViewItem)lvi.Clone();
+
+                metroListViewFeedQueue.Items.Add(l);
+
+                queuedItems.Add(l);
+
+                queueItems.Add(lvi.Text);
+            }
+
+            metroListViewFeedQueue.EndUpdate();
+
+            fManager.BuildNavigationQueue(queueItems);
+
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.mainInnerPanel = new MetroFramework.Controls.MetroPanel();
             this.tableLayoutPanelInnerPanel = new System.Windows.Forms.TableLayoutPanel();
             this.metroPanelMainRight = new MetroFramework.Controls.MetroPanel();
@@ -40,8 +41,10 @@
             this.metroPanelFeedOrganizerControls = new MetroFramework.Controls.MetroPanel();
             this.metroButtonClearQueue = new MetroFramework.Controls.MetroButton();
             this.metroButtonAddItemsToQueue = new MetroFramework.Controls.MetroButton();
+            this.metroButtonQueueAll = new MetroFramework.Controls.MetroButton();
+            this.metroComboBoxPresetQueues = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroListViewFeedOrganizer = new SouthavenFeed.Forms.FormExtras.ListViewWithReordering();
-            this.metroToggleQueueAll = new MetroFramework.Controls.MetroToggle();
             this.mainInnerPanel.SuspendLayout();
             this.tableLayoutPanelInnerPanel.SuspendLayout();
             this.metroPanelMainRight.SuspendLayout();
@@ -61,7 +64,7 @@
             this.mainInnerPanel.HorizontalScrollbarSize = 10;
             this.mainInnerPanel.Location = new System.Drawing.Point(20, 60);
             this.mainInnerPanel.Name = "mainInnerPanel";
-            this.mainInnerPanel.Size = new System.Drawing.Size(578, 315);
+            this.mainInnerPanel.Size = new System.Drawing.Size(578, 441);
             this.mainInnerPanel.TabIndex = 0;
             this.mainInnerPanel.VerticalScrollbarBarColor = true;
             this.mainInnerPanel.VerticalScrollbarHighlightOnWheel = false;
@@ -79,7 +82,7 @@
             this.tableLayoutPanelInnerPanel.Name = "tableLayoutPanelInnerPanel";
             this.tableLayoutPanelInnerPanel.RowCount = 1;
             this.tableLayoutPanelInnerPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelInnerPanel.Size = new System.Drawing.Size(578, 315);
+            this.tableLayoutPanelInnerPanel.Size = new System.Drawing.Size(578, 441);
             this.tableLayoutPanelInnerPanel.TabIndex = 2;
             // 
             // metroPanelMainRight
@@ -92,7 +95,7 @@
             this.metroPanelMainRight.HorizontalScrollbarSize = 10;
             this.metroPanelMainRight.Location = new System.Drawing.Point(292, 3);
             this.metroPanelMainRight.Name = "metroPanelMainRight";
-            this.metroPanelMainRight.Size = new System.Drawing.Size(283, 309);
+            this.metroPanelMainRight.Size = new System.Drawing.Size(283, 435);
             this.metroPanelMainRight.TabIndex = 0;
             this.metroPanelMainRight.VerticalScrollbarBarColor = true;
             this.metroPanelMainRight.VerticalScrollbarHighlightOnWheel = false;
@@ -110,7 +113,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.81759F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.18241F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(281, 307);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(281, 433);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // metroListViewFeedQueue
@@ -118,10 +121,10 @@
             this.metroListViewFeedQueue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroListViewFeedQueue.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.metroListViewFeedQueue.FullRowSelect = true;
-            this.metroListViewFeedQueue.Location = new System.Drawing.Point(3, 27);
+            this.metroListViewFeedQueue.Location = new System.Drawing.Point(3, 36);
             this.metroListViewFeedQueue.Name = "metroListViewFeedQueue";
             this.metroListViewFeedQueue.OwnerDraw = true;
-            this.metroListViewFeedQueue.Size = new System.Drawing.Size(275, 277);
+            this.metroListViewFeedQueue.Size = new System.Drawing.Size(275, 394);
             this.metroListViewFeedQueue.TabIndex = 2;
             this.metroListViewFeedQueue.UseCompatibleStateImageBehavior = false;
             this.metroListViewFeedQueue.UseSelectable = true;
@@ -144,7 +147,7 @@
             this.metroPanelMainLeft.HorizontalScrollbarSize = 10;
             this.metroPanelMainLeft.Location = new System.Drawing.Point(3, 3);
             this.metroPanelMainLeft.Name = "metroPanelMainLeft";
-            this.metroPanelMainLeft.Size = new System.Drawing.Size(283, 309);
+            this.metroPanelMainLeft.Size = new System.Drawing.Size(283, 435);
             this.metroPanelMainLeft.TabIndex = 1;
             this.metroPanelMainLeft.VerticalScrollbarBarColor = true;
             this.metroPanelMainLeft.VerticalScrollbarHighlightOnWheel = false;
@@ -162,7 +165,7 @@
             this.tableLayoutPanelFeedOrganizer.RowCount = 2;
             this.tableLayoutPanelFeedOrganizer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.01294F));
             this.tableLayoutPanelFeedOrganizer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.98706F));
-            this.tableLayoutPanelFeedOrganizer.Size = new System.Drawing.Size(283, 309);
+            this.tableLayoutPanelFeedOrganizer.Size = new System.Drawing.Size(283, 435);
             this.tableLayoutPanelFeedOrganizer.TabIndex = 2;
             // 
             // metroPanelFeedOrganizer
@@ -173,9 +176,9 @@
             this.metroPanelFeedOrganizer.HorizontalScrollbarBarColor = true;
             this.metroPanelFeedOrganizer.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanelFeedOrganizer.HorizontalScrollbarSize = 10;
-            this.metroPanelFeedOrganizer.Location = new System.Drawing.Point(3, 138);
+            this.metroPanelFeedOrganizer.Location = new System.Drawing.Point(3, 194);
             this.metroPanelFeedOrganizer.Name = "metroPanelFeedOrganizer";
-            this.metroPanelFeedOrganizer.Size = new System.Drawing.Size(277, 168);
+            this.metroPanelFeedOrganizer.Size = new System.Drawing.Size(277, 238);
             this.metroPanelFeedOrganizer.TabIndex = 0;
             this.metroPanelFeedOrganizer.VerticalScrollbarBarColor = true;
             this.metroPanelFeedOrganizer.VerticalScrollbarHighlightOnWheel = false;
@@ -184,7 +187,9 @@
             // metroPanelFeedOrganizerControls
             // 
             this.metroPanelFeedOrganizerControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.metroPanelFeedOrganizerControls.Controls.Add(this.metroToggleQueueAll);
+            this.metroPanelFeedOrganizerControls.Controls.Add(this.metroLabel2);
+            this.metroPanelFeedOrganizerControls.Controls.Add(this.metroComboBoxPresetQueues);
+            this.metroPanelFeedOrganizerControls.Controls.Add(this.metroButtonQueueAll);
             this.metroPanelFeedOrganizerControls.Controls.Add(this.metroButtonClearQueue);
             this.metroPanelFeedOrganizerControls.Controls.Add(this.metroButtonAddItemsToQueue);
             this.metroPanelFeedOrganizerControls.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -193,7 +198,7 @@
             this.metroPanelFeedOrganizerControls.HorizontalScrollbarSize = 10;
             this.metroPanelFeedOrganizerControls.Location = new System.Drawing.Point(3, 3);
             this.metroPanelFeedOrganizerControls.Name = "metroPanelFeedOrganizerControls";
-            this.metroPanelFeedOrganizerControls.Size = new System.Drawing.Size(277, 129);
+            this.metroPanelFeedOrganizerControls.Size = new System.Drawing.Size(277, 185);
             this.metroPanelFeedOrganizerControls.TabIndex = 1;
             this.metroPanelFeedOrganizerControls.VerticalScrollbarBarColor = true;
             this.metroPanelFeedOrganizerControls.VerticalScrollbarHighlightOnWheel = false;
@@ -202,7 +207,7 @@
             // metroButtonClearQueue
             // 
             this.metroButtonClearQueue.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroButtonClearQueue.Location = new System.Drawing.Point(84, 3);
+            this.metroButtonClearQueue.Location = new System.Drawing.Point(165, 3);
             this.metroButtonClearQueue.Name = "metroButtonClearQueue";
             this.metroButtonClearQueue.Size = new System.Drawing.Size(75, 23);
             this.metroButtonClearQueue.TabIndex = 3;
@@ -222,6 +227,41 @@
             this.metroButtonAddItemsToQueue.UseSelectable = true;
             this.metroButtonAddItemsToQueue.Click += new System.EventHandler(this.metroButtonAddItemsToQueue_Click);
             // 
+            // metroButtonQueueAll
+            // 
+            this.metroButtonQueueAll.Location = new System.Drawing.Point(84, 3);
+            this.metroButtonQueueAll.Name = "metroButtonQueueAll";
+            this.metroButtonQueueAll.Size = new System.Drawing.Size(75, 23);
+            this.metroButtonQueueAll.TabIndex = 4;
+            this.metroButtonQueueAll.Text = "Queue All";
+            this.metroButtonQueueAll.UseSelectable = true;
+            this.metroButtonQueueAll.Click += new System.EventHandler(this.metroButtonQueueAll_Click);
+            // 
+            // metroComboBoxPresetQueues
+            // 
+            this.metroComboBoxPresetQueues.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.metroComboBoxPresetQueues.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.metroComboBoxPresetQueues.FormattingEnabled = true;
+            this.metroComboBoxPresetQueues.ItemHeight = 23;
+            this.metroComboBoxPresetQueues.Items.AddRange(new object[] {
+            "General",
+            "Inbound",
+            "Outbound"});
+            this.metroComboBoxPresetQueues.Location = new System.Drawing.Point(59, 32);
+            this.metroComboBoxPresetQueues.Name = "metroComboBoxPresetQueues";
+            this.metroComboBoxPresetQueues.Size = new System.Drawing.Size(100, 29);
+            this.metroComboBoxPresetQueues.TabIndex = 5;
+            this.metroComboBoxPresetQueues.UseSelectable = true;
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(3, 32);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(50, 19);
+            this.metroLabel2.TabIndex = 6;
+            this.metroLabel2.Text = "Presets";
+            // 
             // metroListViewFeedOrganizer
             // 
             this.metroListViewFeedOrganizer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -230,20 +270,10 @@
             this.metroListViewFeedOrganizer.Location = new System.Drawing.Point(0, 0);
             this.metroListViewFeedOrganizer.Name = "metroListViewFeedOrganizer";
             this.metroListViewFeedOrganizer.OwnerDraw = true;
-            this.metroListViewFeedOrganizer.Size = new System.Drawing.Size(275, 166);
+            this.metroListViewFeedOrganizer.Size = new System.Drawing.Size(275, 236);
             this.metroListViewFeedOrganizer.TabIndex = 2;
             this.metroListViewFeedOrganizer.UseCompatibleStateImageBehavior = false;
             this.metroListViewFeedOrganizer.UseSelectable = true;
-            // 
-            // metroToggleQueueAll
-            // 
-            this.metroToggleQueueAll.AutoSize = true;
-            this.metroToggleQueueAll.Location = new System.Drawing.Point(3, 32);
-            this.metroToggleQueueAll.Name = "metroToggleQueueAll";
-            this.metroToggleQueueAll.Size = new System.Drawing.Size(80, 17);
-            this.metroToggleQueueAll.TabIndex = 4;
-            this.metroToggleQueueAll.Text = "Off";
-            this.metroToggleQueueAll.UseSelectable = true;
             // 
             // FormMain
             // 
@@ -251,8 +281,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(618, 395);
+            this.ClientSize = new System.Drawing.Size(618, 521);
             this.Controls.Add(this.mainInnerPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormMain";
@@ -287,6 +318,8 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroButton metroButtonAddItemsToQueue;
         private MetroFramework.Controls.MetroButton metroButtonClearQueue;
-        private MetroFramework.Controls.MetroToggle metroToggleQueueAll;
+        private MetroFramework.Controls.MetroButton metroButtonQueueAll;
+        private MetroFramework.Controls.MetroComboBox metroComboBoxPresetQueues;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
     }
 }

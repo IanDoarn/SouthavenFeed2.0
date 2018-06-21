@@ -19,7 +19,7 @@ namespace SouthavenFeed
         [STAThread]
         static void Main()
         {
-            if(Properties.Settings.Default.DEV_MODE)
+            if (Properties.Settings.Default.DEV_MODE)
             {
                 /// <summary>       
                 /// Dev mode is designed to isgnore oracle and launch without
