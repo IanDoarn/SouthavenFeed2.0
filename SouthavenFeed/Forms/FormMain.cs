@@ -26,7 +26,7 @@ namespace SouthavenFeed.Forms
 
         private FeedManager fManager;
 
-        public FormMain(OracleDB ora, FeedManager fManager)
+        public FormMain(OracleDB ora = null, FeedManager fManager)
         {
             this.oracle = ora;
             this.fManager = fManager;

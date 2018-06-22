@@ -34,7 +34,7 @@ namespace SouthavenFeed
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new FormMain(ora: null, fManager: new FeedTaskManager.FeedManager(null)));
+                Application.Run(new FormMain(, fManager: new FeedTaskManager.FeedManager(null)));
             }
             else
             {

@@ -27,13 +27,15 @@ namespace SouthavenFeed.FeedTaskManager
 
             Queue<Query> queue = GetSQLQrys(names);
 
-            new Thread(() =>
+            Thread t = new Thread(() =>
             {
                 Query q = queue.Dequeue();
                 ExecuteQuery(q);
                 queue.Enqueue(q);
             }
             );
+
+            t.Start();
         }
 
         private void ExecuteQuery(Query q)
