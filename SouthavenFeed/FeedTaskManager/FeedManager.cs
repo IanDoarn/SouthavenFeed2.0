@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 
@@ -15,8 +16,6 @@ namespace SouthavenFeed.FeedTaskManager
     {
         private OracleDB oracle;
 
-        private Queue<Query> QueryQueue;
-
         public FeedManager(OracleDB oracle)
         {
             this.oracle = oracle;
@@ -24,12 +23,32 @@ namespace SouthavenFeed.FeedTaskManager
 
         public void BuildQueryQueue(List<string> names)
         {
+            // TODO: implement this: https://stackoverflow.com/questions/363377/how-do-i-run-a-simple-bit-of-code-in-a-new-thread
 
-            QueryQueue = new Queue<Query>();
+            Queue<Query> queue = GetSQLQrys(names);
 
-            foreach(SQLStmt sqlstmt in GetSQLStmts(names))
+            new Thread(() =>
             {
+                Query q = queue.Dequeue();
+                ExecuteQuery(q);
+                queue.Enqueue(q);
+            }
+            );
+        }
 
+        private void ExecuteQuery(Query q)
+        {
+            if (q.Get())
+            {
+                q.FormatResults();
+                q.WriteJSONFile();
+            }
+            else
+            {
+                MessageBox.Show(
+                    string.Format("Error executing query [{0}]", q.Error.ToString()), "Execution Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error
+                    );
             }
         }
 
@@ -66,43 +85,48 @@ namespace SouthavenFeed.FeedTaskManager
             return Jsonifiyer.BuildJSONFile(navDict, "navigation.json");
         }
 
-        private LinkedList<SQLStmt> GetSQLStmts(List<string> names)
+        private Queue<Query> GetSQLQrys(List<string> names)
         {
-            LinkedList<SQLStmt> statments = new LinkedList<SQLStmt>();
+            Queue<Query> QueryQueue = new Queue<Query>();
 
             foreach (string name in names)
             {
-                switch (name)
+                try
                 {
-                    case "productivity":
-                        statments.AddLast(SQLStatementLoader.Get(EStatement.COMPLETED_WORK));
-                        break;
-                    case "otherproductivity":
-                        statments.AddLast(SQLStatementLoader.Get(EStatement.COMPLETED_WORK_OTHER));
-                        break;
-                    case "outboundproductivity":
-                        statments.AddLast(SQLStatementLoader.Get(EStatement.ASSIGNED_OUTBOUND_TRANSFERS));
-                        statments.AddLast(SQLStatementLoader.Get(EStatement.COMPLETED_OUTBOUND_TRANSFERS));
-                        break;
-                    case "movements":
-                        statments.AddLast(SQLStatementLoader.Get(EStatement.CURRENT_MOVEMENTS));
-                        statments.AddLast(SQLStatementLoader.Get(EStatement.COMPLETED_MOVEMENTS));
-                        break;
-                    case "transfers":
-                        statments.AddLast(SQLStatementLoader.Get(EStatement.CURRENT_TRANSFERS));
-                        break;
-                    case "inboundproductivity":
-                        statments.AddLast(SQLStatementLoader.Get(EStatement.COMPLETED_WORK));
-                        statments.AddLast(SQLStatementLoader.Get(EStatement.CURRENT_TRANSFERS));
-                        break;
-                    case "motto":
-                        break;
-                    default:
-                        throw new Exception("Unknown task name");
+                    switch (name)
+                    {
+                        case "productivity":
+                            SQLStmt sql1 = SQLStatementLoader.Get(EStatement.COMPLETED_WORK);
+                            QueryQueue.Enqueue(new CompletedWorkQuery(oracle, sql1.StmtString, sql1.StmtName + ".json", sql1.StmtName));
+                            break;
+                        case "otherproductivity":
+                            SQLStmt sql2 = SQLStatementLoader.Get(EStatement.COMPLETED_WORK_OTHER);
+                            QueryQueue.Enqueue(new CompletedWorkQuery(oracle, sql2.StmtString, sql2.StmtName + ".json", sql2.StmtName));
+                            break;
+                        case "outboundproductivity":
+                            throw new NotImplementedException();
+                        case "movements":
+                            throw new NotImplementedException();
+                        case "transfers":
+                            throw new NotImplementedException();
+                        case "inboundproductivity":
+                            throw new NotImplementedException();
+                        case "motto":
+                            break;
+                        default:
+                            throw new Exception("Unknown task name");
+                    }
+                }
+                catch (NotImplementedException nierror)
+                {
+                    MessageBox.Show(
+                        string.Format("This report has not been implemented. [{0}] [{1}]", name, nierror.ToString()),
+                        "Report Error", MessageBoxButtons.OK, MessageBoxIcon.Error
+                        );
                 }
             }
 
-            return statments;
+            return QueryQueue;
         }
     }
 }

@@ -66,6 +66,7 @@ namespace SouthavenFeed.Forms
 
             metroListViewFeedQueue.Columns.Add("Page Name");
 
+            List<string> queueItems = new List<string>();
 
             foreach (String s in defaultNavigationOrder)
             {
@@ -75,9 +76,16 @@ namespace SouthavenFeed.Forms
                 metroListViewFeedOrganizer.Items.Add(item);            
                 metroListViewFeedQueue.Items.Add(new ListViewItem(s));
 
+
+                queuedItems.Add(item);
+
+                queueItems.Add(item.Text);
+
             }
 
-            foreach(String s in feedPages)
+            fManager.BuildNavigationQueue(queueItems);
+
+            foreach (String s in feedPages)
             {
                 metroListViewFeedOrganizer.Items.Add(new ListViewItem(s));
             }
@@ -94,11 +102,8 @@ namespace SouthavenFeed.Forms
 
         private void metroButtonAddItemsToQueue_Click(object sender, EventArgs e)
         {
-            if(queuedItems.Count > 0)
-            {
-                metroListViewFeedQueue.Items.Clear();
-                queuedItems.Clear();
-            }
+            metroListViewFeedQueue.Items.Clear();
+            queuedItems.Clear();
 
             List<string> queueItems = new List<string>();
 

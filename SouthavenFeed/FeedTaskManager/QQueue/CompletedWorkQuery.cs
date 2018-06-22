@@ -74,7 +74,7 @@ namespace SouthavenFeed.FeedTaskManager.QQueue
         public override string QueryName { get { return queryName; } }
         public QueryResult QueryResults { get { return queryResult; } }
 
-        public Exception Error { get { return error; } }
+        public override Exception Error { get { return error; } }
 
         public CompletedWorkQuery(OracleDB connection, string queryString, string fileName, string queryName)
         {
