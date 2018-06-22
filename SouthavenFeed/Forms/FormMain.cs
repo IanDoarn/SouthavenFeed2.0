@@ -38,6 +38,12 @@ namespace SouthavenFeed.Forms
             generateListViewItems();
         }
 
+        private string formatListName(string name)
+        {
+            string[] temp = name.ToLower().Split(' ');
+            return string.Join("", temp);
+        }
+
         private void generateListViewItems()
         {
             // ====================
@@ -157,6 +163,18 @@ namespace SouthavenFeed.Forms
 
             fManager.BuildNavigationQueue(queueItems);
 
+        }
+
+        private void metroButtonRun_Click(object sender, EventArgs e)
+        {
+            List<string> queuedItemsNames = new List<string>();
+
+            foreach(ListViewItem lvi in queuedItems)
+            {
+                queuedItemsNames.Add(formatListName(lvi.Text));
+            }
+
+            fManager.BuildQueryQueue(queuedItemsNames);
         }
     }
 }

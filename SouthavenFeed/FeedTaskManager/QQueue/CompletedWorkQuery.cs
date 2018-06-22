@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -8,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SouthavenFeed.DataBase;
 
-namespace SouthavenFeed.QQueue
+namespace SouthavenFeed.FeedTaskManager.QQueue
 {
 
     class CompletedWorkQuery : Query
@@ -65,6 +64,7 @@ namespace SouthavenFeed.QQueue
         private OracleDB connection;
         private Exception error;
         private List<Employee> employees;
+        private QueryResult queryResult;
 
         private string queryString;
         private string fileName;
@@ -72,6 +72,7 @@ namespace SouthavenFeed.QQueue
 
         public override string FileName { get { return fileName; } }
         public override string QueryName { get { return queryName; } }
+        public QueryResult QueryResults { get { return queryResult; } }
 
         public Exception Error { get { return error; } }
 
@@ -88,6 +89,7 @@ namespace SouthavenFeed.QQueue
             try
             {
                 results = connection.execute(queryString);
+                queryResult = new QueryResult(results);
                 return true;
             }
             catch(Exception er)
@@ -119,7 +121,7 @@ namespace SouthavenFeed.QQueue
 
         public override void WriteJSONFile()
         {
-            File.WriteAllText(fileName, JsonConvert.SerializeObject(employees, Formatting.Indented));
+            Jsonifiyer.BuildJSONFile(employees, fileName);
         }
     }
 }

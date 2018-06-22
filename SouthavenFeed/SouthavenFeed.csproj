@@ -89,8 +89,13 @@
     <Compile Include="DataBase\OracleDB.cs" />
     <Compile Include="Exceptions\EMsgCodes.cs" />
     <Compile Include="Exceptions\ErrorMessages.cs" />
+    <Compile Include="FeedTaskManager\EmbeddedResource.cs" />
     <Compile Include="FeedTaskManager\Jsonifiyer.cs" />
     <Compile Include="FeedTaskManager\FeedManager.cs" />
+    <Compile Include="FeedTaskManager\QQueue\QueryResult.cs" />
+    <Compile Include="FeedTaskManager\SQL\EStatement.cs" />
+    <Compile Include="FeedTaskManager\SQL\SQLStatementLoader.cs" />
+    <Compile Include="FeedTaskManager\SQL\SqlStmt.cs" />
     <Compile Include="Forms\FormExtras\ListViewWithReordering.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -137,7 +142,7 @@
     <None Include="ExampleData\current_transfers.json" />
     <None Include="ExampleData\movement_breakout.json" />
     <None Include="ExampleData\navigation.json" />
-    <None Include="SQL\README.md" />
+    <None Include="FeedTaskManager\SQL\README.md" />
     <None Include="Website\html\.htaccess">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -206,15 +211,15 @@
     <Content Include="Images\image4.png" />
     <Content Include="Images\image5.png" />
     <Content Include="Images\zblogo.png" />
-    <Content Include="SQL\assigned_outbound_transfers_movements.sql" />
-    <Content Include="SQL\completed_movements.sql" />
-    <Content Include="SQL\completed_outbound_transfer_movements.sql" />
-    <Content Include="SQL\completed_work.sql" />
-    <Content Include="SQL\completed_work_other.sql" />
-    <Content Include="SQL\current_movements.sql" />
-    <Content Include="SQL\current_transfers.sql" />
-    <Content Include="SQL\movement_breakout.sql" />
-    <Content Include="SQL\tracked_kits.sql" />
+    <EmbeddedResource Include="FeedTaskManager\SQL\assigned_outbound_transfers_movements.sql" />
+    <EmbeddedResource Include="FeedTaskManager\SQL\completed_movements.sql" />
+    <EmbeddedResource Include="FeedTaskManager\SQL\completed_outbound_transfer_movements.sql" />
+    <EmbeddedResource Include="FeedTaskManager\SQL\completed_work.sql" />
+    <EmbeddedResource Include="FeedTaskManager\SQL\completed_work_other.sql" />
+    <EmbeddedResource Include="FeedTaskManager\SQL\current_movements.sql" />
+    <EmbeddedResource Include="FeedTaskManager\SQL\current_transfers.sql" />
+    <EmbeddedResource Include="FeedTaskManager\SQL\movement_breakout.sql" />
+    <EmbeddedResource Include="FeedTaskManager\SQL\tracked_kits.sql" />
     <Content Include="Website\html\404.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -342,9 +342,9 @@ namespace SouthavenFeed.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>productivity</string>
-  <string>otherproductivity</string>
-  <string>motto</string>
+  <string>Productivity</string>
+  <string>Other Productivity</string>
+  <string>Motto</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection DEFAULT_NAVIGATION_ORDER {
             get {
@@ -365,10 +365,10 @@ namespace SouthavenFeed.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>outboundproductivity</string>
-  <string>inboundproductivity</string>
-  <string>movements</string>
-  <string>transfers</string>
+  <string>Outbound Productivity</string>
+  <string>Inbound Productivity</string>
+  <string>Movements</string>
+  <string>Transfers</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection FEED_PAGES {
             get {
