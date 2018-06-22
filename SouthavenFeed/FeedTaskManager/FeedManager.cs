@@ -33,11 +33,44 @@ namespace SouthavenFeed.FeedTaskManager
             }
         }
 
+        public bool BuildNavigationQueue(List<string> navigationData)
+        {
+            /*
+             * Navigation file is used by the javascript to determine
+             * what page is to be shown next. This means disctionary generated
+             * and sent to the Jsonifiyer has to have its values as the next key.
+             * 
+             * For example:
+             *      List = ["1", "2", "3", "4"]
+             *      
+             *      resulting dictionary will be
+             *      
+             *      Dict = {
+             *          "1": "2", 
+             *          "2": "3", 
+             *          "3": "4",
+             *          "4": "1"
+             *          }
+             */
+
+            Dictionary<string, string> navDict = new Dictionary<string, string>();
+
+            for (int i = 0; i < navigationData.Count; i++)
+            {
+                if(i == navigationData.Count - 1)
+                    navDict.Add(navigationData[i], navigationData[0] + ".html");
+                else
+                    navDict.Add(navigationData[i], navigationData[i + 1] + ".html");
+            }
+
+            return Jsonifiyer.BuildJSONFile(navDict, "navigation.json");
+        }
+
         private LinkedList<SQLStmt> GetSQLStmts(List<string> names)
         {
             LinkedList<SQLStmt> statments = new LinkedList<SQLStmt>();
-            
-            foreach(string name in names)
+
+            foreach (string name in names)
             {
                 switch (name)
                 {
@@ -70,39 +103,6 @@ namespace SouthavenFeed.FeedTaskManager
             }
 
             return statments;
-        }
-
-        public bool BuildNavigationQueue(List<string> navigationData)
-        {
-            /*
-             * Navigation file is used by the javascript to determine
-             * what page is to be shown next. This means disctionary generated
-             * and sent to the Jsonifiyer has to have its values as the next key.
-             * 
-             * For example:
-             *      List = ["1", "2", "3", "4"]
-             *      
-             *      resulting dictionary will be
-             *      
-             *      Dict = {
-             *          "1": "2", 
-             *          "2": "3", 
-             *          "3": "4",
-             *          "4": "1"
-             *          }
-             */
-
-            Dictionary<string, string> navDict = new Dictionary<string, string>();
-
-            for (int i = 0; i < navigationData.Count; i++)
-            {
-                if(i == navigationData.Count - 1)
-                    navDict.Add(navigationData[i], navigationData[0] + ".html");
-                else
-                    navDict.Add(navigationData[i], navigationData[i + 1] + ".html");
-            }
-
-            return Jsonifiyer.BuildJSONFile(navDict, "navigation.json");
         }
     }
 }

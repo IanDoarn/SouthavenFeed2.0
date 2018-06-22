@@ -44,7 +44,7 @@ namespace SouthavenFeed.FeedTaskManager.QQueue
 
                 for(int i = 0; i < headers.Count; i++)
                 {
-                    rowData.Add(headers[0], row[i].ToString());
+                    rowData.Add(headers[i], row[i].ToString());
                 }
 
                 fresults.Add(rowNumber, rowData);
