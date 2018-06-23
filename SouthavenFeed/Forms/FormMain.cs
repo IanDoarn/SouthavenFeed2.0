@@ -100,6 +100,36 @@ namespace SouthavenFeed.Forms
             metroListViewFeedQueue.EndUpdate();
         }
 
+        private void selectQueueItemsByName(string[] names)
+        {
+            List<string> queueItems = new List<string>();
+
+            metroListViewFeedQueue.BeginUpdate();
+
+            foreach(string s in names)
+            {
+                foreach (ListViewItem lvi in metroListViewFeedOrganizer.Items)
+                {
+                    if(lvi.Text.Equals(s))
+                    {
+                        lvi.Checked = true;
+
+                        ListViewItem l = (ListViewItem)lvi.Clone();
+
+                        metroListViewFeedQueue.Items.Add(l);
+
+                        queuedItems.Add(l);
+
+                        queueItems.Add(lvi.Text);
+                    }
+                }
+            }
+
+            metroListViewFeedQueue.EndUpdate();
+
+            fManager.BuildNavigationQueue(queueItems);
+        }
+
         private void metroButtonAddItemsToQueue_Click(object sender, EventArgs e)
         {
             metroListViewFeedQueue.Items.Clear();
@@ -126,7 +156,6 @@ namespace SouthavenFeed.Forms
             metroListViewFeedQueue.EndUpdate();
 
             fManager.BuildNavigationQueue(queueItems);
-
         }
 
         private void metroButtonClearQueue_Click(object sender, EventArgs e)
@@ -191,7 +220,29 @@ namespace SouthavenFeed.Forms
 
         private void metroComboBoxPresetQueues_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(metroComboBoxPresetQueues.Items[metroComboBoxPresetQueues.SelectedIndex])
+            metroListViewFeedQueue.Items.Clear();
+            queuedItems.Clear();
+
+            foreach (ListViewItem lvi in metroListViewFeedOrganizer.Items)
+            {
+                if (lvi.Checked)
+                    lvi.Checked = false;
+            }
+
+            switch (metroComboBoxPresetQueues.SelectedItem.ToString())
+            {
+                case "General":
+                    selectQueueItemsByName(new string[] {"Productivity", "Other Productivity", "Motto" });
+                    break;
+                case "Inbound":
+                    selectQueueItemsByName(new string[] { "Inbound Productivity", "Transfers", "Motto" });
+                    break;
+                case "Outbound":
+                    selectQueueItemsByName(new string[] { "Outbound Productivity", "Movements", "Motto" });
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
