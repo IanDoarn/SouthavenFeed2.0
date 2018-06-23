@@ -13,6 +13,7 @@ using SouthavenFeed.DataBase;
 using SouthavenFeed.Forms;
 using SouthavenFeed.Exceptions;
 using SouthavenFeed.FeedTaskManager;
+using System.Threading;
 
 namespace SouthavenFeed.Forms
 {
@@ -243,6 +244,12 @@ namespace SouthavenFeed.Forms
                 default:
                     break;
             }
+        }
+
+        private void metroButtonStartWebServer_Click(object sender, EventArgs e)
+        {
+            // TODO: Implement threading to start Webserver
+            // TODO: Use Class SouthavenFeed.Webserver.SimpleHTTPServer
         }
     }
 }

@@ -47,6 +47,7 @@
             this.metroButtonAddItemsToQueue = new MetroFramework.Controls.MetroButton();
             this.metroButtonStop = new MetroFramework.Controls.MetroButton();
             this.metroListViewFeedOrganizer = new SouthavenFeed.Forms.FormExtras.ListViewWithReordering();
+            this.metroButtonStartWebServer = new MetroFramework.Controls.MetroButton();
             this.mainInnerPanel.SuspendLayout();
             this.tableLayoutPanelInnerPanel.SuspendLayout();
             this.metroPanelMainRight.SuspendLayout();
@@ -189,6 +190,7 @@
             // metroPanelFeedOrganizerControls
             // 
             this.metroPanelFeedOrganizerControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanelFeedOrganizerControls.Controls.Add(this.metroButtonStartWebServer);
             this.metroPanelFeedOrganizerControls.Controls.Add(this.metroButtonStop);
             this.metroPanelFeedOrganizerControls.Controls.Add(this.metroButtonRun);
             this.metroPanelFeedOrganizerControls.Controls.Add(this.metroLabel2);
@@ -210,7 +212,7 @@
             // 
             // metroButtonRun
             // 
-            this.metroButtonRun.Location = new System.Drawing.Point(4, 157);
+            this.metroButtonRun.Location = new System.Drawing.Point(84, 67);
             this.metroButtonRun.Name = "metroButtonRun";
             this.metroButtonRun.Size = new System.Drawing.Size(75, 23);
             this.metroButtonRun.TabIndex = 7;
@@ -279,7 +281,7 @@
             // 
             // metroButtonStop
             // 
-            this.metroButtonStop.Location = new System.Drawing.Point(84, 157);
+            this.metroButtonStop.Location = new System.Drawing.Point(165, 67);
             this.metroButtonStop.Name = "metroButtonStop";
             this.metroButtonStop.Size = new System.Drawing.Size(75, 23);
             this.metroButtonStop.TabIndex = 8;
@@ -299,6 +301,16 @@
             this.metroListViewFeedOrganizer.TabIndex = 2;
             this.metroListViewFeedOrganizer.UseCompatibleStateImageBehavior = false;
             this.metroListViewFeedOrganizer.UseSelectable = true;
+            // 
+            // metroButtonStartWebServer
+            // 
+            this.metroButtonStartWebServer.Location = new System.Drawing.Point(3, 67);
+            this.metroButtonStartWebServer.Name = "metroButtonStartWebServer";
+            this.metroButtonStartWebServer.Size = new System.Drawing.Size(75, 23);
+            this.metroButtonStartWebServer.TabIndex = 9;
+            this.metroButtonStartWebServer.Text = "Start Server";
+            this.metroButtonStartWebServer.UseSelectable = true;
+            this.metroButtonStartWebServer.Click += new System.EventHandler(this.metroButtonStartWebServer_Click);
             // 
             // FormMain
             // 
@@ -348,5 +360,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroButton metroButtonRun;
         private MetroFramework.Controls.MetroButton metroButtonStop;
+        private MetroFramework.Controls.MetroButton metroButtonStartWebServer;
     }
 }
