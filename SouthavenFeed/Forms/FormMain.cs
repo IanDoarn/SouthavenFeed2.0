@@ -26,7 +26,7 @@ namespace SouthavenFeed.Forms
 
         private FeedManager fManager;
 
-        public FormMain(OracleDB ora = null, FeedManager fManager)
+        public FormMain(FeedManager fManager, OracleDB ora)
         {
             this.oracle = ora;
             this.fManager = fManager;
@@ -180,6 +180,18 @@ namespace SouthavenFeed.Forms
             }
 
             fManager.BuildQueryQueue(queuedItemsNames);
+            fManager.Start();
+        }
+
+        private void metroButtonStop_Click(object sender, EventArgs e)
+        {
+            if (fManager.Status())
+                fManager.Stop();
+        }
+
+        private void metroComboBoxPresetQueues_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(metroComboBoxPresetQueues.Items[metroComboBoxPresetQueues.SelectedIndex])
         }
     }
 }

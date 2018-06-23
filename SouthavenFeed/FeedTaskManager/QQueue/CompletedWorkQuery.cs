@@ -76,12 +76,23 @@ namespace SouthavenFeed.FeedTaskManager.QQueue
 
         public override Exception Error { get { return error; } }
 
+        public override OracleDB Connection { get { return connection; } set { this.connection = value; } }
+
         public CompletedWorkQuery(OracleDB connection, string queryString, string fileName, string queryName)
         {
             this.connection = connection;
             this.queryString = queryString;
             this.fileName = fileName;
             this.queryName = queryName;
+        }
+
+        public override QueryResult Execute()
+        {
+            Get();
+            FormatResults();
+            WriteJSONFile();
+
+            return queryResult;
         }
 
         public override bool Get()

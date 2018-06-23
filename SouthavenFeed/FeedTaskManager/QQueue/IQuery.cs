@@ -7,5 +7,7 @@
         void FormatResults();
 
         void WriteJSONFile();
+
+        QueryResult Execute();
     }
 }

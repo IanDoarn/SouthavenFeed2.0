@@ -28,13 +28,13 @@ namespace SouthavenFeed
                 /// ExampleData Folder
                 /// </summary>
 
-                //OracleDB oracle = new OracleDB(LoadOracleConfig("log78gist"));
+                OracleDB oracle = new OracleDB(LoadOracleConfig("log78gist"));
 
-                //oracle.OpenConnection();
+                oracle.OpenConnection();
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new FormMain(, fManager: new FeedTaskManager.FeedManager(null)));
+                Application.Run(new FormMain(new FeedTaskManager.FeedManager(oracle), oracle));
             }
             else
             {
@@ -63,7 +63,7 @@ namespace SouthavenFeed
 
                         Application.EnableVisualStyles();
                         Application.SetCompatibleTextRenderingDefault(false);
-                        Application.Run(new FormMain(oracle, new FeedTaskManager.FeedManager(oracle)));
+                        Application.Run(new FormMain(new FeedTaskManager.FeedManager(oracle), oracle));
 
                         oracle.CloseConnection();
                     }
